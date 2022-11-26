@@ -11,7 +11,7 @@ public class Scrollables {
 	private final static String QUERY = "SELECT EMPNO,ENAME,JOB,HIREDATE FROM EMP";
 
 	public static void main(String[] args) {
-		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 				"tiger");
 				Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 						ResultSet.CONCUR_READ_ONLY);
