@@ -35,14 +35,14 @@ public class SerializeDeserialize {
 
 			}
 
-			// converting employee object to byte stream.
+			// converting teacher object to byte stream.
 			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
 					new FileOutputStream(new File(filePath)));) {
 				objectOutputStream.writeObject(teacher);
 				System.out.println("Writing Sucess.");
 			}
 
-			// converting byte stream to object of Employee type.
+			// converting byte stream to object of Teacher type.
 			try (ObjectInputStream objectInputStream = new ObjectInputStream(
 					new FileInputStream(new File(filePath)));) {
 				Teacher one = (Teacher) objectInputStream.readObject();
