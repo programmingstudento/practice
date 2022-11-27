@@ -37,32 +37,23 @@ public class Teacher extends Person implements Serializable {
 		this.schoolName = schoolName;
 	}
 
-	private void writeObject(ObjectOutputStream outputStream) {
-		try {
-			outputStream.defaultWriteObject();
-			outputStream.writeInt(getAge());
-			outputStream.writeObject(getName());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private void writeObject(ObjectOutputStream outputStream) throws IOException {
 
+		outputStream.defaultWriteObject();
+		outputStream.writeInt(getAge());
+		outputStream.writeObject(getName());
 	}
 
-	private void readObject(ObjectInputStream inputStream) {
-		try {
-			inputStream.defaultReadObject();
-			setAge(inputStream.readInt());
-			setName((String) inputStream.readObject());
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private void readObject(ObjectInputStream inputStream) throws ClassNotFoundException, IOException {
+
+		inputStream.defaultReadObject();
+		setAge(inputStream.readInt());
+		setName((String) inputStream.readObject());
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Teacher [salary=%s, schoolName=%s, salary=%s, schoolName=%s]", salary,
-				schoolName, getSalary(), getSchoolName());
+		return String.format("Teacher [salary=%s, schoolName=%s, salary=%s, schoolName=%s]", salary, schoolName,
+				getSalary(), getSchoolName());
 	}
 }
