@@ -13,6 +13,7 @@ public class SerializeDeserialize {
 
 	public static void main(String[] args) {
 		Employee employee = new Employee(1, "Java", "Sql", 25);
+		Teacher teacher = new Teacher("Kotlin", 21, 50_000d, "Kotlin");
 		String filePath = null;
 		try (Scanner scanner = new Scanner(System.in);) {
 			System.out.print("Enter path : ");
@@ -29,6 +30,22 @@ public class SerializeDeserialize {
 			try (ObjectInputStream objectInputStream = new ObjectInputStream(
 					new FileInputStream(new File(filePath)));) {
 				Employee one = (Employee) objectInputStream.readObject();
+				System.out.println("Reading Success.");
+				System.out.println(one);
+
+			}
+
+			// converting employee object to byte stream.
+			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+					new FileOutputStream(new File(filePath)));) {
+				objectOutputStream.writeObject(teacher);
+				System.out.println("Writing Sucess.");
+			}
+
+			// converting byte stream to object of Employee type.
+			try (ObjectInputStream objectInputStream = new ObjectInputStream(
+					new FileInputStream(new File(filePath)));) {
+				Teacher one = (Teacher) objectInputStream.readObject();
 				System.out.println("Reading Success.");
 				System.out.println(one);
 
