@@ -13,6 +13,9 @@ public class ConcurrentModificationExceptionExample {
 		foods.add("Pizza");
 		foods.add("Egg Roll");
 
+		//List<Integer> numbers = Arrays.asList(1, 2, 3);
+		//numbers.add(4); 
+
 		Iterator<String> iterator = foods.iterator();
 		for (; iterator.hasNext();) {
 			System.out.println(iterator.next()); // java.util.ConcurrentModificationException
