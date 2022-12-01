@@ -2,6 +2,7 @@ package com.homework.java;
 
 import static java.lang.Integer.toBinaryString;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -73,5 +74,21 @@ public class Test {
 		Collections.sort(one);
 		Collections.sort(two);
 		return IntStream.range(0, one.size()).allMatch(index -> one.get(index).equals(two.get(index)));
+	}
+
+	public static int countArgs(Object... args) {
+		return (int) Arrays.asList(args).stream().count();
+	}
+
+	public static int mostFrequentItemCount(int[] collection) {
+		Map<Integer, Integer> counter = new HashMap<>();
+		for (int number : collection) {
+			if (Objects.equals(counter.get(number), null)) {
+				counter.put(number, 0);
+			}
+			counter.put(number, counter.get(number) + 1);
+		}
+		return new ArrayList<>(counter.values()).stream().mapToInt(num -> num).max().getAsInt();
+
 	}
 }
