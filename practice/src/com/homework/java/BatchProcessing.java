@@ -11,7 +11,7 @@ public class BatchProcessing {
 
 	public static void main(String[] args) {
 		try (Scanner scanner = new Scanner(System.in);
-				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 						"tiger");
 				Statement statement = connection.createStatement();) {
 
@@ -28,7 +28,6 @@ public class BatchProcessing {
 			} else {
 				connection.rollback();
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
