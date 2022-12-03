@@ -62,10 +62,10 @@ public class TransactionManagement {
 				resultSet1 = preparedStatement1.executeQuery();
 				resultSet2 = preparedStatement2.executeQuery();
 				if (resultSet1.next()) {
-					System.out.printf("Name : %s Balance : %f%n", resultSet1.getString(2), resultSet1.getDouble(1));
+					out.printf("Name : %s Balance : %f%n", resultSet1.getString(2), resultSet1.getDouble(1));
 				}
 				if (resultSet2.next()) {
-					System.out.printf("Name : %s Balance : %f%n", resultSet2.getString(2), resultSet2.getDouble(1));
+					out.printf("Name : %s Balance : %f%n", resultSet2.getString(2), resultSet2.getDouble(1));
 				}
 			} else {
 				connection.rollback();
