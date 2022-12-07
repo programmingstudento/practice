@@ -10,8 +10,19 @@ public class ThreadNine {
 	public static void main(String[] args) {
 		Counter counter = new Counter();
 		System.out.println(counter.getAtomicInteger().intValue());
-		Runnable[] runnables = { () -> counter.increment(), () -> counter.increment(), () -> counter.increment(),
-				() -> counter.increment() };
+		Runnable[] runnables = { () -> {
+			counter.increment();
+			System.out.println(Thread.currentThread().getName());
+		}, () -> {
+			counter.increment();
+			System.out.println(Thread.currentThread().getName());
+		}, () -> {
+			counter.increment();
+			System.out.println(Thread.currentThread().getName());
+		}, () -> {
+			counter.increment();
+			System.out.println(Thread.currentThread().getName());
+		} };
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		for (Runnable runnable : runnables) {
 			executor.submit(runnable);
