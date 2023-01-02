@@ -2,8 +2,11 @@ package com.app.test;
 
 import static java.lang.System.out;
 
+import java.lang.reflect.Proxy;
+
 import com.app.IShape;
 import com.app.Rectangle;
+import com.app.ShapeHandler;
 import com.app.ShapeProxy;
 import com.app.Square;
 
@@ -21,6 +24,11 @@ public class ClientTest {
 
 		IShape aSquare = new ShapeProxy(square);
 		operations(aSquare);
+
+		ClassLoader loader = IShape.class.getClassLoader();
+		IShape theShape = (IShape) Proxy.newProxyInstance(loader, new Class[] { IShape.class },
+				new ShapeHandler(new Square(3)));
+		operations(theShape);
 	}
 
 	private static void operations(IShape shape) {
