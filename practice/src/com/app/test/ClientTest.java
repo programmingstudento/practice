@@ -4,6 +4,7 @@ import static java.lang.System.out;
 
 import com.app.IShape;
 import com.app.Rectangle;
+import com.app.ShapeProxy;
 import com.app.Square;
 
 public class ClientTest {
@@ -14,6 +15,12 @@ public class ClientTest {
 
 		IShape square = new Square(10);
 		operations(square);
+
+		IShape aRectangle = new ShapeProxy(rectangle);
+		operations(aRectangle);
+
+		IShape aSquare = new ShapeProxy(square);
+		operations(aSquare);
 	}
 
 	private static void operations(IShape shape) {
